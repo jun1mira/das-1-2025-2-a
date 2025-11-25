@@ -1,177 +1,528 @@
-# das-1-2025-2-a
-Repositório destinado a disciplina de Design e Arquitetura de Software
+# 📚 Primeiro Bimestre
 
-# 1º Bimestre
-
-## 📅 04/08/25
-
-### Abstração
-Consiste em representar objetos da vida real em classes para diminuir a complexidade de problemas. Com a abstração, se destacam apenas os aspectos essenciais de um objeto, ignorando os detalhes desnecessários. Isso permite focar no que um objeto faz, e não como ele faz.
-
-### Encapsulamento
-É o ocultamento de detalhes da aplicação, privando atributos por exemplo. Protege o estado interno do objeto, permitindo que o acesso e a modificação dos dados sejam feitos apenas por meio de métodos controlados (getters e setters, por exemplo). Assim, evita-se interferência direta no funcionamento interno da classe.
-
-### Coesão
-Toda classe deve implementar uma única funcionalidade ou serviço. Especificamente, todos os métodos e atributos de uma classe devem estar voltados para a implementação do mesmo serviço. Outra forma de dizer é que um código **coeso** faz **apenas uma coisa bem feita**.
-  
-### Acoplamento
-É a conexão de uma classe com outra, possuindo níveis de acoplamento:  
-
-✅ Acoplamento aceitável
-  - A classe **A** usa apenas métodos publicos da classe **B**.
-
-  - A interface provida por **B** é estável do ponto de vista sintático e semântico. Isto é, as assinaturas dos métodos públicos de **B** não mudam com frequência.
-
-❌ Acoplamento ruim
-  - Quando a classe **A** realiza um acesso direto a um arquivo ou banco de dados da classe **B**.
-
-  - Quando as classes **A** e **B** compartilham uma variável ou estrutura de dados global. Por exemplo, a classe **B** altera o valor de uma variável global que a classe **A** usa no seu código.
-
-## 📅 05/08/25 - 📅 11/08/25 - 📅 12/08/25
-
-### SOLID 
-São regras/princípios de como implementar um código orientado objeto da melhor foma possível.
-
-#### S - Single Responsability Principle
-**Toda classe deve ser responsável por apenas uma única tarefa dentro do sistema.** Isso significa que ela deve ter um único motivo para mudar. Deixando o código fácil de entender, manter e modificar.
-
-#### O - Open/Closed Principle  
-**Uma classe deve estar aberta para extensão e fechada para modificação.** Não é necessário mudar o código para já existente para adicionar novos comportamentos e o sistema deve permitir acrescentar novos comportamentos sem mexer no que já existe.
-
-#### L - Liskov Substitution Principle
-**Objetos de uma subclasse devem poder substituir objetos da sua superclasse sem quebrar o comportamento do programa.** Quando é criada uma herança, a subclasse deve manter o contrato da superclasse. Ou seja, tudo que funciona esperando a superclasse, deve continuar funcionando mesmo que receba a subclasse.
-
-#### I - Interface Segregation Principle 
-**As interfaces devem ser pequenas, coesas e específicas para cada tipo de cliente.** O objetivo é evitar que clientes dependam de interfaces com métodos que eles não vão usar. Para evitar isso, duas ou mais interfaces específicas podem, por exemplo, substituir uma interface de propósito geral.
-
-#### D - Dependency Inversion Principle
-**Classes devem depender de abstrações (interfaces, contratos) e não de implementações concretas.** Se uma classe depende diretamente de uma classe concreta, ela fica fortemente acoplada. Por exemplo uma classe _controller_ usa uma interface de _service_ na hora da injeção de dependência para não depender da classe concreta e sim da interface.
-
-### Prefira Composição a Herança
-**Sempre que possível, prefira composição (ter objetos dentro de outros) em vez de herança (ser uma especialização de outro).** É preferível a herança somente em casos onde os filhos de uma classe pai não podem exercer o mesmo papel. Como exemplo, Uma classe Cachorro e Gato que herdam de Animal, nunca um cachorro será um gato ou vice-versa
-
-### Princípio de Demeter
-O princípio do menor conhecimento tenta evitar variáveis globais se limitando aos recursos locais ou recebidos via parâmetro. A implementação de um método deve invocar (opcionalmente) os seguintes outros métodos.  
-- De sua própria classe _caso 1_
-- De objetos passados como parâmetros _caso 2_
-- De objetos criados pelo próprio método _caso 3_
-- De atributos da classe do método _caso 4_
-
-## 📅 26/08/25
-
-### Características de Arquitetura  
-As características definem os critérios para que um sistema seja considerado bem sucedido, mas geralmente não estão relacionadas diretamente às suas funcionalidades principais. As características são independentes da funcionalidade do sistema, e não exigem que se conheça o que o sistema faz exatamente (requisitos não funcionais). Porém são essenciais para o sistema funcionar corretamente.
-
-### Decisôes arquiteturais
-As decisões da arquitetura são regras que dizem como o sistema deve ser construído. São literalmente a escolha de uma arquitetura que vai atender a necessidade específica. Por exemplo, o arquiteto pode decidir que só algumas partes do sistema, como as camadas de negócio e serviços, pode acessar o banco de dados. Outras partes, como a camada de apresentação, não podem acessar o banco diretamente. Essas decisões criam limites para o sistema e ajudam as equipes a saber o que é permitido ou não.
-
-### Princípios de Design
-Diferente de uma decisão fixa, um princípio de design funciona como uma orientação ou recomendação para ajudar na criação do sistema, mas não é uma regra que precisa ser seguida obrigatoriamente. Por exemplo, um princípio comum em microsserviços é usar comunicação assíncrona entre os serviços, ou seja, os serviços enviam mensagens sem precisar esperar uma resposta imediata. Isso ajuda a melhorar o desempenho e a escalabilidade do sistema.
-
-## 📅 01/09/25
-
-### Expectativas principais para um arquiteto de software
-#### Tomar decisões de arquitetura
-_Um arquiteto deve estabelecer as decisões da arquitetura e os princípios do design usados para orientar as decisões de tecnologia dentro da equipe, do departamento ou em toda a empresa._
-Essas decisões precisam considerar questões como desempenho, segurança, facilidade de manutenção e custo, para garantir que o sistema funcione bem hoje e no futuro.
-
-### Analisar continuamente a arquitetura
-_Um arquiteto deve orientar, não especificar as escolhas da tecnologia._  
-Ele precisa estar sempre revisando a arquitetura, procurando melhorias, identificando problemas e incentivando boas práticas que ajudem o sistema a evoluir. Seu papel é estar constantemente reavaliando e promovendo melhorias.
-
-### Manter-se atualizado com as últimas tendências
-_Um arquiteto deve ficar atualizado com as últimas tendências da tecnologia e do setor._  
-Não precisa saber tudo, mas é importante entender o que está vindo para preparar a arquitetura para mudanças e novas oportunidades.
-
-### Assegurar a conformidade com as decisões
-_Um arquiteto deve assegurar a conformidade com as decisões de arquitetura e os princípios de design._  
-É o papel do Arquiteto de assegurar que o desenvolvedor está seguindo os princípios de design predefinidos. 
-
-### Exposição e experiência diversificadas
-_Um arquiteto deve se expor a tecnologias, estruturas, plataformas e ambientes múltiplos e diversificados._
-É importante que o Arquiteto tenha diversas experiências em diversas áreas, pois assim você entende as diversas áreas e problemas que podem surgir
-
-### Ter conhecimento sobre o domínio do negócio
-_Um arquiteto deve ter certo nível de especialização no domínio do negócio._  
-Ele precisa ter o conhecimento do negócio 
-
-### Ter habilidades interpessoais
-_Um arquiteto deve ter habilidades interpessoais excepcionais, inclusive trabalho em equipe, facilitação e liderança._
-Tem que ser capaz de motivar pessoas, inspirar pessoas e ser como um "gestor" para a equipe
-
-### Entender e lidar bem com questôes políticas
-_Um arquiteto deve entender o clima político da empresa e conseguir lidar bem com ele._  
-Tem que ser capaz de entender a hierarquia e ser capaz de negociar prazos, negociar com o cliente e saber influenciar as pessoas em decisôes.
-
-### DevOPS
-É uma forma de entregar funcionalidades de forma rápida para o cliente, uma maneira de agregar valor ao cliente. 
-Participa de um processo cíclico de operações de: 
-- Planejamento
-- Criação
-- Integração Contínua
-- Implantação
-- Monitamento
-- Feedback
-
-## 📅 02/09/25
-
-### Resuma a diferença entre: Arquitetura e Design
-Considerando que _profundidade técnica_ é o que alguém sabe e _amplitude técnica_ é o quanto alguém sabe. Arquitetura gira em torno de tomar decisões que combinam capacidades com restrições técnicas, onde é fundamental um grande conhecimento de soluções variadas.  
-
-Design é sobre a profundidade do conhecimento técnico que uma pessoa possui para realizar o seu trabalho, focando em literalmente na parte prática focada.
-
-### Como é a formação do conhecimento de um arquiteto modelo T?
-A formação do conhecimento de um Arquiteto Modelo T é ocorre por uma combinação entre uma base ampla e diversificada (a parte horizontal do T) e uma profunda especialização em uma área específica.
-
-## 📅 08/09/25
-
-### Trade offs
-Ao definir a arquitetura de um sistema, não é possível atender todos os requisitos ao mesmo tempo. É preciso fazer compromissos (trade-offs) entre atributos como desempenho, escalabilidade, segurança e manutenibilidade para alcançar um equilíbrio adequado ao contexto do projeto.
-
-### Padrão de tópicos
-Um publisher envia mensagens para um canal (stream ou broker), que distribui para múltiplos subscribers. Comunicação assíncrona, desacoplada e escalável.
-Publisher --> Stream/Broker <-- <-- Subscribers (Relação um para muitos)
-
-### Queue
-Um sender envia mensagens para uma fila, onde um receiver consome. Comunicação assíncrona, garante entrega e processamento único de cada mensagem.
-Sender --> Receiver (Relação um para um)
-
-## 📅 15/09/25
-
-### Twelve Factor App [Site](https://12factor.net/)
-A metodologia twelve-factor app define boas práticas para construir aplicações SaaS modernas, com foco em portabilidade, automação, agilidade, escalabilidade e facilidade de implantação na nuvem, independente da linguagem ou serviços utilizados.
+**Bibliografia Principal:**
+- Livro Eng Soft Moderna - Cap 7
+- Fundamentos da Arquitetura de Software
+- Livro Padrões de Projeto
+- Livro Engenharia de Software - Padrões de Projeto
+- [Padrões de Projeto Guru](https://refactoring.guru/design-patterns)
 
 ---
 
-# 2º Bimestre
+## 📍 ABSTRAÇÃO
+**Conceito**: Representar elementos do mundo real no software
+- **Exemplo**: Classes `entity` em Java = tabelas do banco
+- **Analogia**: Mapa de uma cidade (simplifica a realidade)
+
+**⚡ Dica rápida**: Abstração = "esconder complexidade, mostrar essência"
+
+**O que lembrar**: Abstração simplifica o mundo real para o código
+
+---
+
+## 📍 PRINCÍPIOS DE PROJETO DE CÓDIGO
+**Objetivo**: Código mais fácil de entender, manter e evoluir
+
+### Organização por Camadas
+```
+Controller  → API Rest / HTML (entrada)
+Service     → Lógica de negócio (processamento)  
+Repository  → Conexão com BD (dados)
+Entity      → Dados/modelos (estrutura)
+Config      → Configurações (setup)
+```
+
+**⚡ Dica rápida**: "Controller recebe, Service processa, Repository salva"
+
+**O que lembrar**: Cada camada tem uma responsabilidade específica
+
+---
+
+## 📍 PADRONIZAÇÃO DE CÓDIGO
+**Conceito**: Convenções para código consistente
+- **Java**: `CamelCase` (classes), `camelCase` (variáveis)
+- **Benefício**: Facilita leitura e manutenção
+
+**⚡ Dica rápida**: "Código padronizado = código legível"
+
+**O que lembrar**: Convenções tornam o código mais profissional
+
+---
+
+## 📍 OCULTAMENTO DE INFORMAÇÃO (ENCAPSULAMENTO)
+**Conceito**: Esconder detalhes internos, expor apenas o necessário
+- **Como**: `private` (atributos) + `get/set` (acesso controlado)
+- **Benefício**: Evita dependências desnecessárias
+
+**⚡ Dica rápida**: "Private = segredo, Public = público"
+
+**O que lembrar**: Encapsulamento protege a implementação interna
+
+---
+
+## 📍 COESÃO
+**Conceito**: Elementos trabalham em torno de uma única responsabilidade
+- **Alta coesão**: Uma classe = uma função específica
+- **Baixa coesão**: Uma classe = várias funções misturadas
+
+**⚡ Dica rápida**: "Coesão alta = classe focada"
+
+**O que lembrar**: Quanto maior a coesão, mais organizado o código
+
+---
+
+## 📍 ACOPLAMENTO
+**Conceito**: Nível de dependência entre classes/módulos
+- **Baixo acoplamento**: Classes independentes ✅
+- **Alto acoplamento**: Classes muito dependentes ❌
+
+### Classe Anêmica
+- Só tem: nome + atributos + getters/setters
+- **Problema**: Sem lógica de negócio
+
+**⚡ Dica rápida**: "Acoplamento baixo = independência"
+
+**O que lembrar**: Baixo acoplamento = fácil manutenção
+
+---
+
+## 📍 DIAGRAMAS UML
+### Tipos de Setas
+- `→` (vazia contínua): **Herança** - "Cachorro É UM Animal"
+- `⟶` (vazia pontilhada): **Interface** - "Professor ENSINA Aluno"  
+- `⟶` (preenchida): **Associação** - "Carro USA Motor"
+
+**⚡ Dica rápida**: "Herança = é, Interface = faz, Associação = tem"
+
+**O que lembrar**: Cada seta tem significado específico no UML
+
+---
+
+## 📍 DÉBITO TÉCNICO
+**Conceito**: Código mal implementado que causará problemas futuros
+- **Analogia**: Dívida que precisa ser paga com juros
+- **Solução**: Refatoração constante
+
+**⚡ Dica rápida**: "Débito técnico = problema futuro"
+
+**O que lembrar**: Código ruim hoje = dor de cabeça amanhã
+
+---
+
+## 📍 SOLID - PRINCÍPIOS FUNDAMENTAIS
+**Objetivo**: Usar OOP corretamente (código coeso, desacoplado, flexível)
+
+### S - Single Responsibility Principle
+**Conceito**: Uma classe = uma responsabilidade
+- **Problema**: Classe com múltiplas funções
+- **Solução**: Dividir em classes menores
+
+**⚡ Dica rápida**: "Uma classe = uma razão para mudar"
+
+**O que lembrar**: Responsabilidade única = código mais limpo
+
+### I - Interface Segregation Principle  
+**Conceito**: Classe não deve implementar métodos que não usa
+- **Problema**: Interface muito grande
+- **Solução**: Interfaces menores e específicas
+
+**⚡ Dica rápida**: "Interface pequena = implementação fácil"
+
+**O que lembrar**: Interfaces específicas > interfaces genéricas
+
+### L - Liskov Substitution Principle
+**Conceito**: Classe filha deve poder substituir classe pai
+- **Exemplo**: `Cachorro` pode ser usado como `Animal`
+- **Benefício**: Código previsível e seguro
+
+**⚡ Dica rápida**: "Filho deve funcionar como pai"
+
+**O que lembrar**: Substituição sem quebrar funcionalidade
+
+### O - Princípio Aberto/Fechado
+**Conceito**: Aberto para extensão, fechado para modificação
+- **Aberto**: Adicionar funcionalidades sem mexer no existente
+- **Fechado**: Evitar alterações que quebrem o sistema
+
+**⚡ Dica rápida**: "Estenda, não modifique"
+
+**O que lembrar**: Extensão > Modificação
+
+### D - Princípio da Inversão de Dependências
+**Conceito**: Depender de abstrações, não de implementações
+- **Problema**: Classe depende de classe concreta
+- **Solução**: Depender de interface/contrato
+
+**⚡ Dica rápida**: "Dependa do contrato, não da implementação"
+
+**O que lembrar**: Abstrações > implementações concretas
+
+---
+
+## 📍 ARQUITETURA MVC
+**Conceito**: Dividir responsabilidades em 3 camadas
+
+```
+M = Model    → Dados/Entidades
+V = View     → Interface/UI  
+C = Controller → Intermediário (recebe → processa → entrega)
+```
+
+**Fluxo**: `View → Controller → Model → Controller → View`
+
+### Exemplo Prático - Swing Java
+```java
+// View (Janelinha.java)
+public class Janelinha extends JFrame {
+    private JButton botaozinho;
+    private Controlador controlador;
+    
+    public Janelinha() {
+        botaozinho = new JButton("ME CLICA");
+        controlador = new Controlador();
+        botaozinho.addActionListener(controlador);
+        add(botaozinho);
+    }
+}
+
+// Controller (Controlador.java)
+public class Controlador implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        meClica();
+    }
+    
+    private void meClica() {
+        JOptionPane.showMessageDialog(null, "NAO ACREDITO");
+    }
+}
+```
+
+**⚡ Dica rápida**: "MVC = Modelo, Visão, Controle"
+
+**O que lembrar**: MVC separa dados, interface e lógica
+
+---
+
+## 📍 COMPOSIÇÃO vs HERANÇA
+**Conceito**: Prefira combinar objetos (composição) a herdar
+- **Herança**: Rígida, difícil de manter
+- **Composição**: Flexível, reutilizável
+
+**⚡ Dica rápida**: "Composição = montar, Herança = copiar"
+
+**O que lembrar**: Composição > Herança na maioria dos casos
+
+---
+
+## 📍 PRINCÍPIO DE DEMETER
+**Conceito**: Reduzir acoplamento, evitar variáveis globais
+- **Regra**: "Fale apenas com amigos diretos"
+- **Benefício**: Menos dependências
+
+**⚡ Dica rápida**: "Converse só com quem conhece bem"
+
+**O que lembrar**: Menos acoplamento = mais flexibilidade
+
+---
+
+## 📍 ABSTRAÇÕES EM JAVA
+### Tipos de Abstração
+- **Classe**: Atributos + métodos
+- **Interface**: Contrato (métodos sem implementação)
+- **Classe Abstrata**: Mistura classe + interface
+
+**⚡ Dica rápida**: "Interface = contrato, Classe = implementação"
+
+**O que lembrar**: Cada tipo tem seu uso específico
+
+---
+
+## 📍 DESIGN PATTERNS
+**Conceito**: Soluções reutilizáveis para problemas recorrentes
+**Origem**: Gang of Four (1994)
+**Referência**: [Padrões de Projeto Guru](https://refactoring.guru/design-patterns)
+
+### Categorias
+- **Criacionais**: Criação de objetos (Singleton, Factory)
+- **Estruturais**: Composição (Adapter, Facade)  
+- **Comportamentais**: Interação (Observer, Strategy)
+
+**⚡ Dica rápida**: "Patterns = receitas testadas"
+
+**O que lembrar**: 23 padrões divididos em 3 categorias
+
+---
+
+## 📍 FACTORY METHOD
+**Problema**: Múltiplas criações de objetos similares
+**Solução**: Centralizar criação em método fábrica
+
+### Exemplo Prático
+```java
+// ❌ Antes (ruim)
+void f() { TCPChannel c = new TCPChannel(); }
+void g() { TCPChannel c = new TCPChannel(); }
+
+// ✅ Depois (bom)  
+class ChannelFactory {
+  public static Channel create() { return new TCPChannel(); }
+}
+void f() { Channel c = ChannelFactory.create(); }
+```
+
+**⚡ Dica rápida**: "Factory = fábrica de objetos"
+
+**O que lembrar**: Centralizar criação = fácil manutenção
+
+---
+
+## 📍 SINGLETON
+**Problema**: Múltiplas instâncias desnecessárias
+**Solução**: Garantir apenas uma instância global
+
+### Exemplo Prático
+```java
+public class Logger {
+    private static Logger instance;
+    private Logger() {} // construtor privado
+    
+    public static Logger getInstance() {
+        if (instance == null) {
+            instance = new Logger();
+        }
+        return instance;
+    }
+}
+```
+
+**⚡ Dica rápida**: "Singleton = um só no sistema"
+
+**O que lembrar**: Uma instância global para recursos compartilhados
+
+---
+
+## 📍 OBSERVER
+**Conceito**: Notificar múltiplos objetos sobre mudanças
+**Estrutura**: Subject (observado) + Observer (interessados)
+
+### Exemplo Prático
+```java
+// Subject notifica → Observers reagem
+Publisher publisher = new Publisher();
+publisher.addObserver(new Subscriber("Alice"));
+publisher.notifyObservers("Nova mensagem!");
+```
+
+**⚡ Dica rápida**: "Observer = sistema de notificações"
+
+**O que lembrar**: Um para muitos = Observer pattern
+
+---
+
+## 📍 ARQUITETO DE SOFTWARE
+### Expectativas
+- **Técnica**: Decisões estruturais importantes
+- **Comunicação**: Equipes Dev + Ops + Negócios  
+- **Qualidade**: Performance, escalabilidade, segurança
+
+### Decisões de Arquitetura
+- **Impacto**: Moldam o futuro do sistema
+- **Tipos**: Estilos, padrões, frameworks, tecnologias
+- **Característica**: Difíceis de modificar depois
+
+**⚡ Dica rápida**: "Arquiteto = decisões que definem o futuro"
+
+**O que lembrar**: Decisões arquiteturais = impacto de longo prazo
+
+---
+
+## 📍 ANÁLISE CONTÍNUA
+**Conceito**: Revisar periodicamente se arquitetura atende demandas
+- **Objetivo**: Identificar melhorias e ajustes
+- **Frequência**: Regular e proativa
+
+**⚡ Dica rápida**: "Arquitetura = processo contínuo"
+
+**O que lembrar**: Arquitetura evolui com o negócio
+
+---
+
+## 📍 ATUALIZAÇÃO CONSTANTE
+**Necessidade**: Tecnologia evolui rapidamente
+- **Risco**: Soluções ultrapassadas
+- **Solução**: Aprendizado contínuo
+
+**⚡ Dica rápida**: "Arquiteto atualizado = decisões assertivas"
+
+**O que lembrar**: Tecnologia muda = arquiteto deve acompanhar
+
+---
+
+## 📍 DOMÍNIO DO NEGÓCIO
+**Conceito**: Compreender objetivos e processos da organização
+- **Benefício**: Alinhar arquitetura às metas estratégicas
+- **Resultado**: Soluções com valor real
+
+**⚡ Dica rápida**: "Arquiteto = ponte entre técnico e negócio"
+
+**O que lembrar**: Arquitetura deve servir ao negócio
+
+---
+
+## 📍 DEVOPS
+**Conceito**: Integração Dev + Ops para melhor colaboração
+**Cultura**: Equipes compartilham práticas e ferramentas
+
+### Benefícios
+- **Ciclo mais rápido**: Entregas menores e automatizadas
+- **Melhoria contínua**: Feedback constante
+- **Maior colaboração**: Comunicação eficaz
+- **Maior estabilidade**: Automação + monitoramento
+
+**⚡ Dica rápida**: "DevOps = Dev + Ops trabalhando juntos"
+
+**O que lembrar**: DevOps = cultura de colaboração
+
+---
+
+## 📍 ARQUITETURA vs DESIGN
+### Arquitetura
+- **Escopo**: Decisões estruturais importantes
+- **Impacto**: Qualidade, evolução, manutenção
+- **Modificação**: Difícil de mudar
+- **Exemplos**: Estilos, padrões, tecnologias
+
+### Design  
+- **Escopo**: Decisões de nível baixo
+- **Impacto**: Organização interna de componentes
+- **Modificação**: Mais fácil de mudar
+- **Exemplos**: Classes, métodos, detalhes
+
+**⚡ Dica rápida**: "Arquitetura = estrutura, Design = detalhes"
+
+**O que lembrar**: Arquitetura define estrutura, Design implementa detalhes
+
+---
+
+## 📍 ARQUITETO MODELO T
+### Formação
+- **Barra horizontal**: Conhecimento amplo (diversas áreas)
+- **Barra vertical**: Conhecimento profundo (especialização)
+
+### Áreas Amplas
+- Linguagens, bancos, nuvem, DevOps, segurança, redes
+
+### Especializações
+- Microsserviços, performance, segurança
+
+**⚡ Dica rápida**: "T = amplo + profundo"
+
+**O que lembrar**: Arquiteto = amplitude + profundidade
+
+---
+
+## 📍 TRADE-OFF
+**Conceito**: Avaliar consequências de cada escolha arquitetural
+**Realidade**: Toda decisão tem ganhos e perdas
+
+### Exemplo: Microsserviços
+- **Ganhos**: Escalabilidade, flexibilidade
+- **Perdas**: Complexidade operacional, custos
+
+**⚡ Dica rápida**: "Trade-off = ganha aqui, perde ali"
+
+**O que lembrar**: Não existe solução perfeita, apenas consciente
+
+---
+
+## 📍 REQUISITOS
+### Funcionais
+- **Definição**: Telas que podemos ver
+- **Exemplo**: Login, cadastro, relatórios
+
+### Não Funcionais  
+- **Definição**: Requisitos que precisamos cumprir
+- **Exemplo**: Performance, segurança, disponibilidade
+
+**⚡ Dica rápida**: "Funcional = o que faz, Não funcional = como faz"
+
+**O que lembrar**: Ambos são essenciais para o sistema
+
+---
+
+## 📍 CARACTERÍSTICAS ARQUITETURAIS
+**Conceito**: Requisitos funcionais da arquitetura
+**Realidade**: Impossível cumprir 100% de todas
+**Objetivo**: Buscar o melhor equilíbrio possível
+
+**⚡ Dica rápida**: "Arquitetura = equilíbrio de características"
+
+**O que lembrar**: Foco no que é mais importante para o negócio
+
+---
+
+## 📍 DECISÕES DE ARQUITETURA
+**Importância**: Escolher arquitetura = escolher futuro do sistema
+**Responsabilidade**: Uma das decisões mais importantes
+**Impacto**: Define caminho de evolução
+
+**⚡ Dica rápida**: "Arquitetura = futuro do sistema"
+
+**O que lembrar**: Decisão arquitetural = compromisso de longo prazo
+
+---
+
+## 📍 PRINCÍPIOS DO DESIGN
+**Conceito**: Regras para desenvolver sistemas
+**Objetivo**: Guiar desenvolvimento de forma consistente
+**Aplicação**: Seguir durante todo o ciclo de desenvolvimento
+
+**⚡ Dica rápida**: "Princípios = regras do jogo"
+
+**O que lembrar**: Princípios orientam decisões de design
+
+---
+
+## 📍 PENSAMENTO ARQUITETÔNICO
+**Conceito**: Abordagem sistemática para decisões arquiteturais
+**Componentes**: Análise de trade-offs, consideração de contexto
+**Objetivo**: Decisões conscientes e justificadas
+
+**⚡ Dica rápida**: "Pensamento arquitetônico = decisões conscientes"
+
+**O que lembrar**: Arquitetura requer pensamento estratégico
+
+---
+
+# 📚 Segundo Bimestre
 
 ## 📅 29/09/25
 
-### [Circuit Breaker pattern](https://learn.microsoft.com/pt-br/azure/architecture/patterns/circuit-breaker?wt.mc_id=AZ-MVP-5003638)
-O Circuit Breaker é um padrão de design que visa proteger a comunicação entre sistemas, especialmente em arquiteturas distribuídas, onde chamadas remotas podem falhar ou demorar para responder. Ele ajuda a lidar com falhas transitórias e a evitar que sistemas dependentes fiquem sobrecarregados por tentativas repetidas de conexão com um serviço que está indisponível.
+### 📍 CIRCUIT BREAKER PATTERN
+**Conceito**: Padrão de design que protege a comunicação entre sistemas
+- **Objetivo**: Lidar com falhas transitórias e evitar sobrecarga em sistemas distribuídos
+- **Referência**: [Circuit Breaker pattern](https://learn.microsoft.com/pt-br/azure/architecture/patterns/circuit-breaker?wt.mc_id=AZ-MVP-5003638)
 
 O Circuit Breaker possui três estados principais:
+- **Closed (Fechado)**: Requisições são encaminhadas normalmente. Monitora falhas e muda para aberto se ultrapassar limite configurado.
+- **Open (Aberto)**: Requisições são bloqueadas imediatamente, evitando chamadas ao serviço indisponível. Após timeout, muda para meio aberto.
+- **Half Open (Meio aberto)**: Permite número limitado de requisições para testar se o serviço já está saudável. Se bem-sucedidas, volta para fechado. Caso contrário, volta para aberto.
 
-- Closed (Fechado)  
-No estado fechado, as requisições são encaminhadas normalmente para o serviço dependente. O Circuit Breaker monitora as falhas e, caso o número de erros ultrapasse um limite configurado, o estado muda para aberto.
+**⚡ Dica rápida**: "Circuit Breaker = disjuntor que protege a comunicação entre sistemas"
 
-- Open (Aberto)  
-No estado aberto, as requisições são bloqueadas imediatamente, evitando chamadas ao serviço que está indisponível. Após um tempo de espera configurado (timeout), o Circuit Breaker muda para o estado meio aberto.
+**O que lembrar**: Três estados (Fechado → Aberto → Meio Aberto) protegem contra falhas em cascata
 
-- Half Open (Meio aberto)  
-Nesse estado, o Circuit Breaker permite que um número limitado de requisições teste se o serviço dependente já está saudável novamente. Se essas requisições forem bem-sucedidas, o Circuit Breaker volta ao estado fechado. Caso contrário, volta para aberto e reinicia o ciclo.
+---
 
 ## 📅 06/10/25
 
-### Definições de características arquiteturais
-Basicamente, é o conjunto de qualidades e decisões de design que torna um software único e funcional. Uma característica da arquitetura atende a três critérios:
-
-- Especifica uma consideração de design fora do domínio
-- Influencia algum aspecto estrutural de design
-- É essencial ou importante para o sucesso da aplicação
+### 📍 DEFINIÇÕES DE CARACTERÍSTICAS ARQUITETURAIS
+**Conceito**: Conjunto de qualidades e decisões de design que torna um software único e funcional
+- **Critérios**: Especifica consideração de design fora do domínio, influencia aspecto estrutural, é essencial para o sucesso
 
 ### Características Operacionais da Arquitetura
-Envolvem capacidades como desempenho, escalabilidade, elasticidade, disponibilidade e confiabilidade. 
+Envolvem capacidades como desempenho, escalabilidade, elasticidade, disponibilidade e confiabilidade.
 
 | Termo | Definição |
 | :--- | :--- |
@@ -184,7 +535,7 @@ Envolvem capacidades como desempenho, escalabilidade, elasticidade, disponibilid
 | **Escalabilidade** | Capacidade de crescer conforme demanda. |
 
 ### Características Estruturais da Arquitetura
-Englobam desde qualidade do código, como boa modularidade, acoplamento controlado entre os componentes, código legível até muitas outras avaliações internas da qualidade.
+Englobam qualidade do código, modularidade, acoplamento controlado, código legível e outras avaliações internas.
 
 | Termo | Definição |
 | :--- | :--- |
@@ -199,186 +550,231 @@ Englobam desde qualidade do código, como boa modularidade, acoplamento controla
 | **Atualização** | A facilidade de atualizar uma versão prévia da aplicação ou solução para uma versão mais nova. |
 
 ### Características Transversais da Arquitetura
-Muitas características estão fora ou desafiam a categorização, formando importantes restrições de design e considerações, abaixo segue exemplos.
+Muitas características desafiam a categorização, formando importantes restrições de design.
 
 | Termo | Definição |
 | :--- | :--- |
 | **Acessibilidade** | Garante o acesso a todos os usuários, incluindo aqueles com deficiências (ex: daltonismo, perda auditiva). |
 | **Armazenamento** | Define se os dados precisarão ser armazenados ou excluídos após um período de tempo. |
-| **Autenticação** | Assegurara que os usuários são quem afirmam ser (verificação de identidade). |
+| **Autenticação** | Assegura que os usuários são quem afirmam ser (verificação de identidade). |
 | **Autorização** | Garantem que os usuários possam acessar apenas certas funções ou áreas da aplicação. |
 | **Legalidade** | Restrições legais e regulatórias sob as quais o sistema deve operar. |
 | **Privacidade** | Ocultamento de transações de funcionários internos da empresa. |
 | **Segurança** | Especifica a necessidade de criptografia de dados. |
-| **Suporte** | O nível de suporte técnico necessário e as facilidades de registro requeridas para diagnosticar erros no sistema. |
 | **Usabilidade / Viabilidade** | O nível de treinamento necessário para os usuários atingirem seus objetivos com a aplicação. |
 
 ### A Arquitetura menos pior
-A Arquitetura de Software é um exercício de trade-offs (compensações). É impossível maximizar todos os atributos de qualidade (ex: Segurança vs. Desempenho) simultaneamente, pois melhorar um quase sempre prejudica outro. O objetivo do arquiteto não é criar a "melhor arquitetura", mas sim a "arquitetura menos pior", ou seja, aquela que faz o melhor equilíbrio entre as características conflitantes para atender aos requisitos de negócio.
+A Arquitetura de Software é um exercício de trade-offs (compensações). É impossível maximizar todos os atributos de qualidade (ex: Segurança vs. Desempenho) simultaneamente, pois melhorar um quase sempre prejudica outro.
 
-## 📅 06/10/25
+**⚡ Dica rápida**: "Arquitetura = equilíbrio entre características conflitantes"
 
-### CQRS (Comand Query Responsability Sogregation)
-É um design pattern onde a ideia é dividir operações de leitura e escrita na persistencia da aplicação, principalmente em performance. Utilizando modelos separadas para cada tipo de operação como ler (read) e escrever (write) e, com esta abordagem permite que cada modelo seja otimizado apenas para a respectiva operação otimizando desempenho, escalabilidade e segurança. 
+**O que lembrar**: Objetivo é criar a "arquitetura menos pior", não a melhor
 
-Com o crecimento de uma aplicação se torna difícil de otimizar o crescimento vertical da mesma e com isso temos alguns desafios:
-- Data mismatch: A representação de leitura e escrita pode divergir. Alguns campos são obrigatórios durante uma operação
-- Lock orientation: Operações em paralelo no mesmo conjunto de dados pode causar um "lock" 
-- Problemas de performance: A abordagem tradicional pode ter um efeito negativo e causar problemas de desempenho
-- Desafios de segurança: Pode ser difícil de gerenciar quando as entidades estão sujeitas a ler e escrever operações 
+---
 
-#### Solução
-Usar o CQRS para separar as operações de leitura, de operações de escrita como consultas. Este padrão é útil em cenários onde é necessário uma separação clara entre comandos e leituras.
+### 📍 CQRS (COMMAND QUERY RESPONSIBILITY SEGREGATION)
+**Conceito**: Padrão que divide operações de leitura e escrita na persistência
+- **Objetivo**: Otimizar performance, escalabilidade e segurança
+- **Aplicação**: Modelos separados para ler (read) e escrever (write)
+
+Com o crescimento de uma aplicação, alguns desafios surgem:
+- **Data mismatch**: A representação de leitura e escrita pode divergir
+- **Lock orientation**: Operações em paralelo podem causar "lock" no mesmo conjunto de dados
+- **Problemas de performance**: Abordagem tradicional pode ter efeito negativo no desempenho
+- **Desafios de segurança**: Difícil gerenciar quando entidades estão sujeitas a ler e escrever operações
 
 #### Modelos separados em uma única base de dados
-Nesta abordagem, tanto o modelo de leitura quanto o de escrita compartilham o mesmo banco de dados, mas possuem lógicas independentes para suas operações.
+Tanto o modelo de leitura quanto o de escrita compartilham o mesmo banco de dados, mas possuem lógicas independentes.
 
 #### Modelo de Escrita
-- Processa comandos que atualizam ou persistem dados.
-- Inclui validação e lógica de domínio para garantir a integridade e consistência.
-- Otimizado para suportar regras de negócio e operações transacionais.
+- Processa comandos que atualizam ou persistem dados
+- Inclui validação e lógica de domínio para garantir integridade e consistência
+- Otimizado para suportar regras de negócio e operações transacionais
 
 #### Modelo de Leitura
-- Atende consultas para recuperar dados de forma eficiente.
-- Gera DTOs (Data Transfer Objects) ou projeções adaptadas para a interface do usuário.
-- Evita lógica complexa de domínio para maximizar o desempenho das consultas.
+- Atende consultas para recuperar dados de forma eficiente
+- Gera DTOs (Data Transfer Objects) ou projeções adaptadas para a interface do usuário
+- Evita lógica complexa de domínio para maximizar o desempenho das consultas
+
+**⚡ Dica rápida**: "CQRS = separar leitura de escrita para melhor performance"
+
+**O que lembrar**: Usar quando chega no limite da escalabilidade vertical ou há problemas de lock
+
+---
 
 ## 📅 13/10/25 - 📅 14/10/25
 
-### Retry Pattern
-Permite que uma aplicação lide com falhas ao tentar conectar com um serviço ou uma rede, tentando renectar de uma forma suave. O que aumenta a estabilidade da aplicação.
+### 📍 RETRY PATTERN
+**Conceito**: Padrão que permite lidar com falhas ao tentar conectar com serviços ou redes
+- **Objetivo**: Aumentar a estabilidade da aplicação tentando reconectar de forma suave
+- **Contexto**: Aplicações na nuvem devem estar preparadas para falhas transitórias
 
-Aplicações na nuvem devem estar preparadas para falhas transitórias, que são comuns nesse ambiente. Essas falhas incluem:
-- Perda momentânea de conectividade de rede.
-- Indisponibilidade temporária de um serviço.
-- Timeouts que ocorrem quando um serviço está sobrecarregado.
+Falhas transitórias comuns incluem:
+- Perda momentânea de conectividade de rede
+- Indisponibilidade temporária de um serviço
+- Timeouts quando um serviço está sobrecarregado
 
 #### Estratégias de Repetição
-**Cancelar:** Se a falha claramente não for transitória (ex: credenciais inválidas), a operação deve ser cancelada imediatamente e um erro reportado. Não faz sentido tentar novamente.  
+- **Cancelar**: Se a falha claramente não for transitória (ex: credenciais inválidas), a operação deve ser cancelada imediatamente
+- **Tentar Novamente de Imediato**: Se a falha for rara ou incomum (ex: pacote de rede corrompido), nova tentativa imediata
+- **Tentar Novamente Após um Atraso**: Estratégia mais comum. Atraso pode ser:
+  - **Incremental**: Aumenta linearmente (ex: 2s, 4s, 6s)
+  - **Exponencial (Exponential Backoff)**: Aumenta exponencialmente, eficaz para evitar sobrecarregar serviços ocupados
 
-**Tentar Novamente de Imediato:** Se a falha for rara ou incomum (ex: um pacote de rede corrompido), uma nova tentativa imediata pode ser a melhor abordagem.  
+**⚡ Dica rápida**: "Retry = tentar novamente de forma inteligente"
 
-**Tentar Novamente Após um Atraso:** Esta é a estratégia mais comum. Se a falha for causada por sobrecarga ou problemas de conectividade, é necessário dar um tempo para que o serviço se recupere.  
+**O que lembrar**: Usar backoff exponencial para evitar sobrecarga de serviços
 
-O atraso entre as tentativas pode ser:
-- Incremental: Aumenta linearmente a cada nova tentativa (ex: 2s, 4s, 6s).
-- Exponencial (Exponential Backoff): O tempo de espera aumenta exponencialmente, o que é eficaz para evitar sobrecarregar um serviço que já está ocupado.
+---
 
-### Fundamentos dos Padrões de Arquitetura
-Os estilos de arquitetura, por vezes chamados de padrões de arquitetura, descrevem uma relação nomeada de componentes que cobrem várias características da arquitetura.
+### 📍 FUNDAMENTOS DOS PADRÕES DE ARQUITETURA
+**Conceito**: Estilos de arquitetura descrevem relação nomeada de componentes que cobrem várias características
 
 **A Grande Bola de Lama**  
-Uma Grande Bola de Lama é uma confusão de código espaguete mal estruturado, desleixado e unido com fita adesiva e arame. Esses sistemas mostram sinais inequívocos de crescimento desregulado e reparos rápidos e repetidos.
+Confusão de código espaguete mal estruturado, desleixado e unido com fita adesiva e arame. Mostra sinais inequívocos de crescimento desregulado e reparos rápidos e repetidos.
 
 **Arquitetura Unitária**  
-Quando o software iniciou, havia apenas o computador e o software que rodava nele. Durante as várias épocas de evolução do hardware e do software, os dois iniciaram como uma entidade, então se dividiram conforme aumentava a necessidade de capacidades mais sofisticadas.
+Quando o software iniciou, havia apenas o computador e o software que rodava nele. Durante a evolução do hardware e software, os dois iniciaram como uma entidade e se dividiram conforme aumentava a necessidade de capacidades mais sofisticadas.
 
 **Cliente/Servidor**   
-Ele divide a funcionalidade técnica em duas partes lógicas: o front-end (Cliente) e o back-end (Servidor). Essa separação é a base para abordar a complexidade e a necessidade de particionamento dos sistemas de software.
+Divide a funcionalidade técnica em duas partes lógicas: o front-end (Cliente) e o back-end (Servidor). Base para abordar a complexidade e necessidade de particionamento dos sistemas de software.
 
 **Desktop + Servidor de Banco de Dados**  
-Dividia o sistema entre a aplicação Cliente (Desktop), que tratava da interface do usuário e da lógica de apresentação, e o Servidor de Banco de Dados, responsável pelo processamento de dados robusto e de alta complexidade. A comunicação entre eles era estabelecida por protocolos de rede padrão.
+Dividia o sistema entre a aplicação Cliente (Desktop), que tratava da interface do usuário e lógica de apresentação, e o Servidor de Banco de Dados, responsável pelo processamento de dados robusto e de alta complexidade.
 
 **Navegador + Servidor Web**  
-Assim que o desenvolvimento web moderno chegou, a divisão comum tornou o navegador web conectado ao servidor web (que por sua vez conectava um servidor de banco de dados). A separação das responsabilidades lembrava a variante de desktop, mas com clientes ainda mais leves, como navegadores, permitindo uma distribuição mais ampla tanto dentro quanto fora dos firewalls. 
+Com o desenvolvimento web moderno, a divisão comum tornou o navegador web conectado ao servidor web (que por sua vez conectava um servidor de banco de dados). Separação das responsabilidades lembrava a variante de desktop, mas com clientes ainda mais leves.
+
+**⚡ Dica rápida**: "Arquitetura evolui de monolítica para distribuída"
+
+**O que lembrar**: Cada estilo surgiu para resolver limitações do anterior
+
+---
 
 ## 📅 20/10/25 - 📅 21/10/25
 
-### Estilo de Arquitetura em Camadas(N-Tier)
-A arquitetura em camadas é o estilo mais comum e tradicional para o desenvolvimento de aplicações. Sua popularidade se deve principalmente a:
-- Simplicidade e baixo custo.
-- Familiaridade entre os desenvolvedores.
-- Alinhamento com a estrutura organizacional das equipes (UI, backend, banco de dados), conforme a Lei de Conway.
+### 📍 ESTILO DE ARQUITETURA EM CAMADAS (N-TIER)
+**Conceito**: Estilo mais comum e tradicional para desenvolvimento de aplicações
+- **Popularidade**: Simplicidade, baixo custo, familiaridade entre desenvolvedores
+- **Alinhamento**: Com estrutura organizacional das equipes (UI, backend, banco de dados), conforme a Lei de Conway
 
 #### Características
-- Componentes são agrupados em camadas lógicas horizontais.
-- Cada camada tem uma função específica.
+- Componentes são agrupados em camadas lógicas horizontais
+- Cada camada tem uma função específica
 - Camadas padrão:
-  - Apresentação: Interface do usuário (UI).
-  - Comercial: Regras de negócio.
-  - Persistência: Acesso aos dados.
-  - Banco de Dados: Armazenamento dos dados.
-  - A aplicação é dividida por função técnica, não por domínio de negócio. Algo que dificulta a realização de mudanças em funcionalidades específicas (ex: "cliente"), pois elas se espalham por todas as camadas.
+  - **Apresentação**: Interface do usuário (UI)
+  - **Comercial**: Regras de negócio
+  - **Persistência**: Acesso aos dados
+  - **Banco de Dados**: Armazenamento dos dados
+
+**Problema**: A aplicação é dividida por função técnica, não por domínio de negócio. Isso dificulta mudanças em funcionalidades específicas (ex: "cliente"), pois elas se espalham por todas as camadas.
 
 #### Camada aberta vs. fechada
-- Camada fechada: Uma requisição deve passar pela camada imediatamente abaixo, sem pular etapas. Isso cria isolamento, impedindo que mudanças em uma camada afetem as outras e tornando o sistema menos frágil.
-  
-- Camada aberta: Permite que uma requisição "pule" camadas. Isso oferece flexibilidade, mas aumenta o risco de criar um sistema fortemente acoplado e difícil de manter.
+- **Camada fechada**: Uma requisição deve passar pela camada imediatamente abaixo, sem pular etapas. Cria isolamento e torna o sistema menos frágil.
+- **Camada aberta**: Permite que uma requisição "pule" camadas. Oferece flexibilidade, mas aumenta risco de criar sistema fortemente acoplado.
 
 #### Sinkhole
-Descreve uma situação em que as camadas, que deveriam adicionar valor e lógica a uma requisição, agem apenas como "atravessadoras", simplesmente passando a solicitação para a camada seguinte sem realizar nenhum processamento significativo.
+Descreve situação em que as camadas agem apenas como "atravessadoras", passando a solicitação para a camada seguinte sem realizar processamento significativo.
+
+**⚡ Dica rápida**: "Camadas = separação por função técnica, não por domínio"
+
+**O que lembrar**: Camada fechada = isolamento, Sinkhole = camadas inúteis
+
+---
 
 ## 📅 27/10/25
 
-### Estilo de Arquitetura Pipeline
-A arquitetura Pipeline é um estilo fundamental que se baseia na divisão de funcionalidade em partes distintas, sendo o princípio inerente por trás dos shells de terminal Unix (como Bash) e tendo paralelos em linguagens funcionais e modelos como o MapReduce. Embora seja frequentemente associada a implementações de baixo nível, é robusta para aplicações de nível comercial.
+### 📍 ESTILO DE ARQUITETURA PIPELINE
+**Conceito**: Arquitetura baseada na divisão de funcionalidade em partes distintas
+- **Origem**: Princípio inerente por trás dos shells de terminal Unix (como Bash)
+- **Paralelos**: Linguagens funcionais e modelos como MapReduce
+- **Uso**: Robusta para aplicações de nível comercial, não apenas baixo nível
 
-### Topologia e Componentes
-Consiste em Filtros (Filters) conectados por Canais (Pipes) em um fluxo unidirecional e ponto a ponto.
+#### Topologia e Componentes
+Consiste em **Filtros (Filters)** conectados por **Canais (Pipes)** em um fluxo unidirecional e ponto a ponto.
 
-- Filtros: São os componentes de processamento. Devem ser autônomos, independentes, geralmente sem estado e realizar apenas uma tarefa (responsabilidade única).
-- Canais: Formam o caminho de comunicação. São tipicamente unidirecionais e ponto a ponto, transportando payloads de dados (preferencialmente menores para otimizar o desempenho).
+- **Filtros**: Componentes de processamento. Devem ser autônomos, independentes, geralmente sem estado e realizar apenas uma tarefa (responsabilidade única).
+- **Canais**: Formam o caminho de comunicação. Tipicamente unidirecionais e ponto a ponto, transportando payloads de dados (preferencialmente menores para otimizar desempenho).
 
-Tipos de filtros:
-1. Produtor: O ponto de partida (origem), responsável por criar e emitir dados.
-2. Transformador: Recebe, executa uma modificação ou enriquecimento dos dados (análogo ao map).
-3. Verificador: Recebe, testa um ou mais critérios e opcionalmente emite uma saída, filtrando os dados (semelhante ao reduce ou filter).
-4. Consumidor: O ponto de término (destino), que persiste o resultado final (ex: em um banco de dados) ou o exibe.
+#### Tipos de filtros
+1. **Produtor**: Ponto de partida (origem), responsável por criar e emitir dados
+2. **Transformador**: Recebe, executa modificação ou enriquecimento dos dados (análogo ao map)
+3. **Verificador**: Recebe, testa um ou mais critérios e opcionalmente emite saída, filtrando os dados (semelhante ao reduce ou filter)
+4. **Consumidor**: Ponto de término (destino), que persiste o resultado final (ex: em banco de dados) ou o exibe
 
-## 📅 03/11/25 
+**⚡ Dica rápida**: "Pipeline = filtros conectados por canais unidirecionais"
 
-### Estilo de Arquitetura Microkernel
-O estilo de arquitetura Microkernel é um padrão consolidado, ideal para aplicações baseadas em produto (empacotadas para instalação no cliente) e também muito utilizado em software comercial personalizado. Ele é essencialmente uma estrutura monolítica simples, projetada para facilitar a extensão, adaptação e isolamento de funcionalidades.
+**O que lembrar**: Cada filtro faz uma coisa bem feita (responsabilidade única)
 
-### Topologia e Componentes
+---
+
+## 📅 03/11/25
+
+### 📍 ESTILO DE ARQUITETURA MICROKERNEL
+**Conceito**: Padrão consolidado para aplicações baseadas em produto e software comercial personalizado
+- **Estrutura**: Monolítica simples projetada para facilitar extensão, adaptação e isolamento de funcionalidades
+- **Ideal para**: Aplicações empacotadas para instalação no cliente
+
+#### Topologia e Componentes
 A arquitetura é composta por dois elementos principais:
-- **Sistema Central (Core System)**: Define a funcionalidade mínima necessária para o sistema operar e representa o "caminho feliz" ou fluxo de processamento geral. O Sistema Central é responsável por localizar e chamar os plug-ins apropriados. Ele isola a complexidade e a lógica de processamento altamente volátil, delegando-as aos plug-ins. Dependendo da complexidade, pode ser implementado como um monolítico modular ou uma arquitetura em camadas. O Sistema Central tipicamente gerencia um banco de dados compartilhado pela aplicação.
 
-- **Componentes de Plug-in**: São módulos autônomos e independentes que contêm processamento especializado, recursos adicionais e código personalizado. Seu principal objetivo é isolar o código volátil, facilitando a manutenção e a testabilidade. O ideal é que os plug-ins sejam independentes entre si e sejam gerenciados pelo Sistema Central através de um Registro que mapeia os plug-ins disponíveis e seus detalhes de acesso.
+- **Sistema Central (Core System)**: Define funcionalidade mínima necessária para o sistema operar. Representa o "caminho feliz" ou fluxo de processamento geral. Responsável por localizar e chamar os plug-ins apropriados. Isola complexidade e lógica de processamento altamente volátil, delegando-as aos plug-ins. Pode ser implementado como monolítico modular ou arquitetura em camadas. Tipicamente gerencia banco de dados compartilhado pela aplicação.
 
-### Comunicação e Implementação
-A comunicação entre o Sistema Central e os plug-ins é geralmente ponto a ponto (chamadas de método ou função), sendo implementada por meio de bibliotecas compartilhadas (JARs, DLLs), namespaces ou pacotes.
-Alternativamente, os plug-ins podem ser acessados remotamente via REST ou mensageria, sendo implementados como serviços independentes. Embora isso melhore o desacoplamento e a escalabilidade, transforma a arquitetura em distribuída (o que pode complicar a implantação em produtos locais de terceiros) e o quantum arquitetural permanece singular (1), pois todas as requisições ainda precisam passar pelo Sistema Central.
+- **Componentes de Plug-in**: Módulos autônomos e independentes que contêm processamento especializado, recursos adicionais e código personalizado. Objetivo principal é isolar código volátil, facilitando manutenção e testabilidade. Idealmente são independentes entre si e gerenciados pelo Sistema Central através de um Registro que mapeia os plug-ins disponíveis e seus detalhes de acesso.
 
-**Contratos:** Os contratos entre os plug-ins e o Sistema Central (definindo comportamento e dados de entrada/saída) são cruciais e geralmente são padronizados. Adaptadores são usados para integrar plug-ins de terceiros com contratos personalizados.
+#### Comunicação e Implementação
+A comunicação entre o Sistema Central e os plug-ins é geralmente ponto a ponto (chamadas de método ou função), implementada por meio de bibliotecas compartilhadas (JARs, DLLs), namespaces ou pacotes.
+
+Alternativamente, os plug-ins podem ser acessados remotamente via REST ou mensageria, sendo implementados como serviços independentes. Isso melhora desacoplamento e escalabilidade, mas transforma a arquitetura em distribuída (pode complicar implantação em produtos locais de terceiros).
+
+**Contratos**: Os contratos entre os plug-ins e o Sistema Central (definindo comportamento e dados de entrada/saída) são cruciais e geralmente padronizados. Adaptadores são usados para integrar plug-ins de terceiros com contratos personalizados.
+
+**⚡ Dica rápida**: "Microkernel = sistema central + plug-ins independentes"
+
+**O que lembrar**: Sistema Central gerencia, plug-ins fazem o trabalho específico
+
+---
 
 ## 📅 10/11/25
-Microsserviços são um estilo arquitetural centrado em alto desacoplamento, domínios independentes e unidades pequenas de implementação, cada uma rodando em seu próprio processo. Eles derivam fortemente dos conceitos do DDD (Domain-Driven Design), especialmente o Contexto Delimitado (Bounded Context).
 
-- O termo “microsserviços” foi popularizado em 2014 por Martin Fowler e James Lewis.
-- Diferente de outros estilos, foi nomeado antes de se tornar amplamente usado.
-- Surgiu da observação de padrões modernos de desenvolvimento e da influência central do DDD.
+### 📍 MICROSSERVIÇOS
+**Conceito**: Estilo arquitetural centrado em alto desacoplamento, domínios independentes e unidades pequenas de implementação
+- **Origem**: Cada serviço roda em seu próprio processo (VM, container etc.)
+- **Influência**: Deriva fortemente dos conceitos do DDD (Domain-Driven Design), especialmente o Contexto Delimitado (Bounded Context)
+- **Histórico**: Termo popularizado em 2014 por Martin Fowler e James Lewis
 
 ### Contexto Delimitado
-- Cada serviço representa um domínio ou fluxo de trabalho, contendo todo o necessário para operar:
+Cada serviço representa um domínio ou fluxo de trabalho, contendo todo o necessário para operar:
 - Código
 - Banco de dados
 - Dependências internas
+
 Isso reduz acoplamento e favorece duplicação quando necessário.
 
 ### Desacoplamento > Reutilização
-1. Reutilizar aumenta acoplamento.
-2. Microsserviços preferem duplicação para manter autonomia.
+1. Reutilizar aumenta acoplamento
+2. Microsserviços preferem duplicação para manter autonomia
 
 ### Topologia e Distribuição
-Cada serviço roda em seu próprio processo (VM, container etc.).   
-Isso melhora isolamento e escalabilidade, mas reduz performance devido às chamadas de rede.   
-A granularidade correta é fundamental — serviços pequenos demais criam excesso de comunicação.   
+Cada serviço roda em seu próprio processo (VM, container etc.).  
+Isso melhora isolamento e escalabilidade, mas reduz performance devido às chamadas de rede.  
+A granularidade correta é fundamental — serviços pequenos demais criam excesso de comunicação.
 
 ### Granularidade
 A definição dos limites de serviços deve considerar:
-- Finalidade (cada serviço faz algo coeso)
-- Transações (evitar transações distribuídas)
-- Coreografia (não exigir comunicação exagerada)
+- **Finalidade**: Cada serviço faz algo coeso
+- **Transações**: Evitar transações distribuídas
+- **Coreografia**: Não exigir comunicação exagerada
+
 Granularidade exige iteração: dificilmente fica correta na primeira tentativa.
 
 ### Isolamento dos Dados
 Cada microsserviço deve ter seu banco dedicado, evitando esquemas compartilhados.
-Consequências:
 
-1. Não existe mais uma “única fonte de verdade” global.
-2. Pode exigir replicação, cache ou coordenação entre domínios.
-3. Permite liberdade para escolher tecnologias diferentes por serviço.
+**Consequências:**
+1. Não existe mais uma "única fonte de verdade" global
+2. Pode exigir replicação, cache ou coordenação entre domínios
+3. Permite liberdade para escolher tecnologias diferentes por serviço
 
 ### Comunicação
 Os serviços podem se comunicar de forma:
@@ -392,6 +788,12 @@ Menos tolerante a falhas.
 - Eventos
 - Mensagens
 Maior desacoplamento e resiliência.
-O ecossistema é heterogêneo: diferentes serviços podem usar linguagens e tecnologias distintas.   
 
-Em geral, microsserviços trazem grande flexibilidade, escalabilidade e rapidez evolutiva, mas ao custo de maior complexidade operacional. Funcionam muito bem quando o domínio exige desacoplamento, autonomia de equipes e alta taxa de mudanças, mas podem ser desnecessários ou problemáticos para sistemas simples ou altamente interdependentes.
+O ecossistema é heterogêneo: diferentes serviços podem usar linguagens e tecnologias distintas.
+
+**⚡ Dica rápida**: "Microsserviços = serviços independentes, cada um com seu banco"
+
+**O que lembrar**: Desacoplamento > reutilização, granularidade correta é fundamental
+
+---
+  
